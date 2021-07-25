@@ -1,0 +1,13 @@
+.profile {
+	background-color: green;
+	padding: 10px;
+	&-info {
+		display: flex;
+		&__avatar {
+			width: 150px;
+		}
+		&__descr {
+			margin-left: 10px;
+		}
+	}
+}

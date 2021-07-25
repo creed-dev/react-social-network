@@ -1,0 +1,15 @@
+.post {
+	background-color: #043e04;
+	border-radius: 30px;
+	width: 458px;
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	&__avatar {
+		width: 70px;
+		border-radius: 50%;
+	}
+	&__text {
+		margin-left: 20px;
+	}
+}

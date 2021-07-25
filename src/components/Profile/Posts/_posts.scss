@@ -1,0 +1,13 @@
+.posts {
+	&__text {
+		resize: none;
+	}
+	&__add {
+		display: flex;
+		align-items: center;
+	}
+	&__publish {
+		padding: 5px;
+		margin-left: 20px;
+	}
+}

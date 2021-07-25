@@ -1,0 +1,20 @@
+.container {
+	width: 1140px;
+	margin: 0 auto;
+}
+
+.wrapper {
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.main {
+	width: 81%;
+}
+
+@import '../components/Header/header';
+@import '../components/Navbar/navbar';
+@import '../components/Profile/profile';
+@import '../components/Profile/Posts/posts';
+@import '../components/Profile/Posts/Post/post';
