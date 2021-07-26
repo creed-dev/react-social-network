@@ -1,3 +1,25 @@
 .dialogs {
+	padding: 10px;
 	background-color: #026b6e;
+	display: flex;
+
+	&__messages {
+		padding-left: 10px;
+		width: 100%;
+		background-color: #038589;
+		margin-left: 300px;
+	}
+
+	&__name {
+		width: 100px;
+		&-item {
+			color: white;
+			text-decoration: none;
+			&_active {
+				background-color: gray;
+				border-radius: 30px;
+				padding: 1px 2px 1px 2px;
+			}
+		}
+	}
 }
