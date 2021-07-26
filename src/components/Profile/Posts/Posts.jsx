@@ -1,6 +1,16 @@
 import Post from './Post/Post';
 
 const Posts = () => {
+	const postsData = [
+		{ text: 'Hi!', id: 1, likeCount: 24 },
+		{ text: 'Yo!', id: 2, likeCount: 32 },
+		{ text: 'Olla!', id: 3, likeCount: 48 },
+	];
+
+	const renderPosts = postsData.map(post => (
+		<Post text={post.text} id={post.id} likeCount={post.likeCount} />
+	));
+
 	return (
 		<div className="posts">
 			<h3 className="posts__header">Posts</h3>
@@ -14,9 +24,7 @@ const Posts = () => {
 				></textarea>
 				<button className="posts__publish">Add post</button>
 			</div>
-			<Post text="Hi!" />
-			<Post text="Yo!" />
-			<Post text="Olla!" />
+			{renderPosts}
 		</div>
 	);
 };

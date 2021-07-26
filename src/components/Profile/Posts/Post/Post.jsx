@@ -9,7 +9,7 @@ const Post = props => {
 				className="post__avatar"
 			/>
 			<div className="post__text">{props.text}</div>
-			<Like count="24" />
+			<Like count={props.likeCount} />
 		</div>
 	);
 };
