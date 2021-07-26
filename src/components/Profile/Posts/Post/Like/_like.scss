@@ -1,8 +1,7 @@
 .like {
 	display: flex;
-	align-items: center;
-	float: right;
-	margin-right: 20px;
+	position: absolute;
+	right: 20px;
 	&__icon {
 		width: 20px;
 	}
