@@ -1,14 +1,17 @@
 .navbar {
-    width: 18%;
-    background-color: #c07171;
-    padding: 10px 0 10px 0;
+	width: 18%;
+	background-color: #c07171;
+	padding: 10px 0 10px 0;
 
-    &__list {
-        list-style-type: none;
-    }
+	&__list {
+		list-style-type: none;
+	}
 
-    &__item {
-        color: white;
-        text-decoration: none;
-    }
+	&__item {
+		color: white;
+		text-decoration: none;
+		&_active {
+			color: #c8cfc8;
+		}
+	}
 }
