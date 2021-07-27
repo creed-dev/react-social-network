@@ -9,7 +9,16 @@ import Dialogs from './components/Dialogs/Dialogs';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 
-const App = () => {
+const App = props => {
+	const renderDialogs = () => (
+		<Dialogs
+			dialogsNameData={props.dialogsNameData}
+			dialogsMessagesData={props.dialogsMessagesData}
+		/>
+	);
+
+	const renderProfile = () => <Profile postsData={props.postsData} />;
+
 	return (
 		<BrowserRouter>
 			<div className="container">
@@ -17,8 +26,8 @@ const App = () => {
 				<div className="wrapper">
 					<Navbar />
 					<div className="main">
-						<Route path="/profile" component={Profile} />
-						<Route path="/dialogs" component={Dialogs} />
+						<Route path="/profile" render={renderProfile} />
+						<Route path="/dialogs" render={renderDialogs} />
 						<Route path="/music" component={Music} />
 						<Route path="/settings" component={Settings} />
 					</div>

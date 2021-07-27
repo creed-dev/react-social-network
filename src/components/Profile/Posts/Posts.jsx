@@ -1,13 +1,7 @@
 import Post from './Post/Post';
 
-const Posts = () => {
-	const postsData = [
-		{ text: 'Hi!', id: 1, likeCount: 24 },
-		{ text: 'Yo!', id: 2, likeCount: 32 },
-		{ text: 'Olla!', id: 3, likeCount: 48 },
-	];
-
-	const renderPosts = postsData.map(post => (
+const Posts = props => {
+	const renderPosts = props.postsData.map(post => (
 		<Post text={post.text} id={post.id} likeCount={post.likeCount} />
 	));
 

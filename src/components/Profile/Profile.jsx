@@ -1,6 +1,6 @@
 import Posts from './Posts/Posts';
 
-const Profile = () => {
+const Profile = props => {
 	return (
 		<div className="profile">
 			<div className="profile-info">
@@ -16,7 +16,7 @@ const Profile = () => {
 					<div className="profile-info__descr-item">Education: Higher</div>
 				</div>
 			</div>
-			<Posts />
+			<Posts postsData={props.postsData} />
 		</div>
 	);
 };

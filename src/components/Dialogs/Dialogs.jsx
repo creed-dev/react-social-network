@@ -1,11 +1,11 @@
 import DialogsMessages from './DialogsMessages/DialogsMessages';
 import DialogsName from './DialogsName/DialogsName';
 
-const Dialogs = () => {
+const Dialogs = props => {
 	return (
 		<div className="dialogs">
-			<DialogsName />
-			<DialogsMessages />
+			<DialogsName dialogsNameData={props.dialogsNameData} />
+			<DialogsMessages dialogsMessagesData={props.dialogsMessagesData} />
 		</div>
 	);
 };
