@@ -10,14 +10,9 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 
 const App = props => {
-	const renderDialogs = () => (
-		<Dialogs
-			dialogsNameData={props.dialogsNameData}
-			dialogsMessagesData={props.dialogsMessagesData}
-		/>
-	);
+	const renderDialogs = () => <Dialogs dialogsPage={props.state.dialogsPage} />;
 
-	const renderProfile = () => <Profile postsData={props.postsData} />;
+	const renderProfile = () => <Profile profilePage={props.state.profilePage} />;
 
 	return (
 		<BrowserRouter>

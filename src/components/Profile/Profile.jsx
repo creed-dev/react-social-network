@@ -16,7 +16,7 @@ const Profile = props => {
 					<div className="profile-info__descr-item">Education: Higher</div>
 				</div>
 			</div>
-			<Posts postsData={props.postsData} />
+			<Posts postsData={props.profilePage.postsData} />
 		</div>
 	);
 };

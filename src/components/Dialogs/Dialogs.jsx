@@ -4,8 +4,10 @@ import DialogsName from './DialogsName/DialogsName';
 const Dialogs = props => {
 	return (
 		<div className="dialogs">
-			<DialogsName dialogsNameData={props.dialogsNameData} />
-			<DialogsMessages dialogsMessagesData={props.dialogsMessagesData} />
+			<DialogsName dialogsName={props.dialogsPage.dialogsName} />
+			<DialogsMessages
+				dialogsMessagesData={props.dialogsPage.dialogsMessagesData}
+			/>
 		</div>
 	);
 };

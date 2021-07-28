@@ -7,12 +7,18 @@
 		padding-left: 10px;
 		width: 100%;
 		background-color: #038589;
-		margin-left: 300px;
+		margin-left: 100px;
 	}
 
 	&__name {
-		width: 100px;
+		width: 400px;
 		&-item {
+			margin-top: 5px;
+			display: flex;
+			align-items: center;
+		}
+		&-name {
+			margin-left: 5px;
 			color: white;
 			text-decoration: none;
 			&_active {
@@ -20,6 +26,10 @@
 				border-radius: 30px;
 				padding: 1px 2px 1px 2px;
 			}
+		}
+		&-avatar {
+			width: 30px;
+			border-radius: 50%;
 		}
 	}
 }
