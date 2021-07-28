@@ -18,7 +18,9 @@ const Profile = props => {
 			</div>
 			<Posts
 				postsData={props.profilePage.postsData}
+				postTextareaValue={props.profilePage.postTextareaValue}
 				addNewPost={props.addNewPost}
+				onTextareaChange={props.onTextareaChange}
 			/>
 		</div>
 	);

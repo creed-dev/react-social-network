@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { addNewPost } from './redux/state';
+import { addNewPost, onTextareaChange } from './redux/state';
 import { BrowserRouter } from 'react-router-dom';
 
 export const renderApp = state => {
 	ReactDOM.render(
 		<React.StrictMode>
 			<BrowserRouter>
-				<App state={state} addNewPost={addNewPost} />
+				<App
+					state={state}
+					addNewPost={addNewPost}
+					onTextareaChange={onTextareaChange}
+				/>
 			</BrowserRouter>
 		</React.StrictMode>,
 		document.getElementById('root')

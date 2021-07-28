@@ -16,6 +16,7 @@ const App = props => {
 		<Profile
 			profilePage={props.state.profilePage}
 			addNewPost={props.addNewPost}
+			onTextareaChange={props.onTextareaChange}
 		/>
 	);
 

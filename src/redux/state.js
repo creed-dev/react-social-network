@@ -7,6 +7,7 @@ const state = {
 			{ text: 'Yo!', id: 2, likeCount: 32 },
 			{ text: 'Olla!', id: 3, likeCount: 48 },
 		],
+		postTextareaValue: '',
 	},
 	dialogsPage: {
 		dialogsName: [
@@ -44,12 +45,17 @@ const state = {
 
 export default state;
 
-export const addNewPost = newPostText => {
+export const addNewPost = () => {
 	const newPost = {
-		text: newPostText,
+		text: state.profilePage.postTextareaValue,
 		id: state.profilePage.postsData.length + 1,
 		likeCount: 0,
 	};
 	state.profilePage.postsData.push(newPost);
+	renderApp(state);
+};
+
+export const onTextareaChange = text => {
+	state.profilePage.postTextareaValue = text;
 	renderApp(state);
 };

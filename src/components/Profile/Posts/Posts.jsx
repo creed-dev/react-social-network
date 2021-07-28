@@ -10,6 +10,12 @@ const Posts = props => {
 	const addNewPost = () => {
 		const newPostText = newPostTextarea.current.value;
 		props.addNewPost(newPostText);
+		props.onTextareaChange('');
+	};
+
+	const onTextareaChange = () => {
+		const newPostText = newPostTextarea.current.value;
+		props.onTextareaChange(newPostText);
 	};
 
 	return (
@@ -21,9 +27,11 @@ const Posts = props => {
 					rows="5"
 					className="posts__text"
 					placeholder="Enter the text"
-					maxlength="140"
+					maxLength="140"
 					ref={newPostTextarea}
-				></textarea>
+					value={props.postTextareaValue}
+					onChange={onTextareaChange}
+				/>
 				<button className="posts__publish" onClick={addNewPost}>
 					Add post
 				</button>
