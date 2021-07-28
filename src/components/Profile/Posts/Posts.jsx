@@ -8,14 +8,13 @@ const Posts = props => {
 
 	const newPostTextarea = React.createRef();
 	const addNewPost = () => {
-		const newPostText = newPostTextarea.current.value;
-		props.addNewPost(newPostText);
+		props.addNewPost();
 		props.onTextareaChange('');
 	};
 
-	const onTextareaChange = () => {
+	const onNewPostChange = () => {
 		const newPostText = newPostTextarea.current.value;
-		props.onTextareaChange(newPostText);
+		props.onNewPostChange(newPostText);
 	};
 
 	return (
@@ -30,7 +29,7 @@ const Posts = props => {
 					maxLength="140"
 					ref={newPostTextarea}
 					value={props.postTextareaValue}
-					onChange={onTextareaChange}
+					onChange={onNewPostChange}
 				/>
 				<button className="posts__publish" onClick={addNewPost}>
 					Add post

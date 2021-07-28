@@ -32,4 +32,13 @@
 			border-radius: 50%;
 		}
 	}
+
+	&__send {
+		margin-top: 10px;
+		display: flex;
+		align-items: center;
+		&-btn {
+			margin-left: 10px;
+		}
+	}
 }

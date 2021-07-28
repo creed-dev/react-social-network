@@ -7,6 +7,9 @@ const Dialogs = props => {
 			<DialogsName dialogsName={props.dialogsPage.dialogsName} />
 			<DialogsMessages
 				dialogsMessagesData={props.dialogsPage.dialogsMessagesData}
+				dialogsSendMessageValue={props.dialogsPage.dialogsSendMessageValue}
+				sendNewMessage={props.sendNewMessage}
+				onChangeMessage={props.onChangeMessage}
 			/>
 		</div>
 	);

@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { addNewPost, onTextareaChange } from './redux/state';
+import {
+	addNewPost,
+	onChangeMessage,
+	onNewPostChange,
+	sendNewMessage,
+} from './redux/state';
 import { BrowserRouter } from 'react-router-dom';
 
 export const renderApp = state => {
@@ -13,7 +18,9 @@ export const renderApp = state => {
 				<App
 					state={state}
 					addNewPost={addNewPost}
-					onTextareaChange={onTextareaChange}
+					onNewPostChange={onNewPostChange}
+					sendNewMessage={sendNewMessage}
+					onChangeMessage={onChangeMessage}
 				/>
 			</BrowserRouter>
 		</React.StrictMode>,

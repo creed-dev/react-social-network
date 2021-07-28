@@ -10,13 +10,19 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 
 const App = props => {
-	const renderDialogs = () => <Dialogs dialogsPage={props.state.dialogsPage} />;
+	const renderDialogs = () => (
+		<Dialogs
+			dialogsPage={props.state.dialogsPage}
+			sendNewMessage={props.sendNewMessage}
+			onChangeMessage={props.onChangeMessage}
+		/>
+	);
 
 	const renderProfile = () => (
 		<Profile
 			profilePage={props.state.profilePage}
 			addNewPost={props.addNewPost}
-			onTextareaChange={props.onTextareaChange}
+			onNewPostChange={props.onNewPostChange}
 		/>
 	);
 

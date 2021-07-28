@@ -40,6 +40,7 @@ const state = {
 			{ message: 'Yo!', id: 3 },
 			{ message: 'Olla!', id: 4 },
 		],
+		dialogsSendMessageValue: '',
 	},
 };
 
@@ -55,7 +56,21 @@ export const addNewPost = () => {
 	renderApp(state);
 };
 
-export const onTextareaChange = text => {
-	state.profilePage.postTextareaValue = text;
+export const onNewPostChange = post => {
+	state.profilePage.postTextareaValue = post;
+	renderApp(state);
+};
+
+export const sendNewMessage = () => {
+	const newMessage = {
+		message: state.dialogsPage.dialogsSendMessageValue,
+		id: state.dialogsPage.dialogsMessagesData.length + 1,
+	};
+	state.dialogsPage.dialogsMessagesData.push(newMessage);
+	renderApp(state);
+};
+
+export const onChangeMessage = message => {
+	state.dialogsPage.dialogsSendMessageValue = message;
 	renderApp(state);
 };
