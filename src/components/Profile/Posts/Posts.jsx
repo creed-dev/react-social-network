@@ -9,7 +9,7 @@ const Posts = props => {
 	const newPostTextarea = React.createRef();
 	const addNewPost = () => {
 		props.addNewPost();
-		props.onTextareaChange('');
+		props.onNewPostChange('');
 	};
 
 	const onNewPostChange = () => {

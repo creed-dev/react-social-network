@@ -1,4 +1,4 @@
-import { renderApp } from '../render';
+let renderApp = () => {};
 
 const state = {
 	profilePage: {
@@ -73,4 +73,8 @@ export const sendNewMessage = () => {
 export const onChangeMessage = message => {
 	state.dialogsPage.dialogsSendMessageValue = message;
 	renderApp(state);
+};
+
+export const subscribe = observer => {
+	renderApp = observer;
 };

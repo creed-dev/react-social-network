@@ -33,7 +33,7 @@ const DialogsMessages = props => {
 					onChange={onChangeMessage}
 				/>
 				<button className="dialogs__send-btn" onClick={sendNewMessage}>
-					Add post
+					Send
 				</button>
 			</div>
 		</div>

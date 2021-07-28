@@ -37,6 +37,9 @@
 		margin-top: 10px;
 		display: flex;
 		align-items: center;
+		&-text {
+			resize: none;
+		}
 		&-btn {
 			margin-left: 10px;
 		}
