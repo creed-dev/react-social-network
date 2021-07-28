@@ -1,3 +1,5 @@
+import { renderApp } from '../render';
+
 const state = {
 	profilePage: {
 		postsData: [
@@ -41,3 +43,13 @@ const state = {
 };
 
 export default state;
+
+export const addNewPost = newPostText => {
+	const newPost = {
+		text: newPostText,
+		id: state.profilePage.postsData.length + 1,
+		likeCount: 0,
+	};
+	state.profilePage.postsData.push(newPost);
+	renderApp(state);
+};

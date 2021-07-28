@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './css/App.min.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
@@ -12,23 +12,26 @@ import Settings from './components/Settings/Settings';
 const App = props => {
 	const renderDialogs = () => <Dialogs dialogsPage={props.state.dialogsPage} />;
 
-	const renderProfile = () => <Profile profilePage={props.state.profilePage} />;
+	const renderProfile = () => (
+		<Profile
+			profilePage={props.state.profilePage}
+			addNewPost={props.addNewPost}
+		/>
+	);
 
 	return (
-		<BrowserRouter>
-			<div className="container">
-				<Header />
-				<div className="wrapper">
-					<Navbar />
-					<div className="main">
-						<Route path="/profile" render={renderProfile} />
-						<Route path="/dialogs" render={renderDialogs} />
-						<Route path="/music" component={Music} />
-						<Route path="/settings" component={Settings} />
-					</div>
+		<div className="container">
+			<Header />
+			<div className="wrapper">
+				<Navbar />
+				<div className="main">
+					<Route path="/profile" render={renderProfile} />
+					<Route path="/dialogs" render={renderDialogs} />
+					<Route path="/music" component={Music} />
+					<Route path="/settings" component={Settings} />
 				</div>
 			</div>
-		</BrowserRouter>
+		</div>
 	);
 };
 

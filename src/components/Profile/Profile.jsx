@@ -16,7 +16,10 @@ const Profile = props => {
 					<div className="profile-info__descr-item">Education: Higher</div>
 				</div>
 			</div>
-			<Posts postsData={props.profilePage.postsData} />
+			<Posts
+				postsData={props.profilePage.postsData}
+				addNewPost={props.addNewPost}
+			/>
 		</div>
 	);
 };
