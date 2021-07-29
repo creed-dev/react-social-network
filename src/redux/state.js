@@ -1,3 +1,6 @@
+import dialogsPageReducer from './dialogsPage-reducer';
+import profilePageReducer from './profilePage-reducer';
+
 let store = {
 	_callSubscriber() {},
 	subscribe(observer) {
@@ -53,48 +56,16 @@ let store = {
 	},
 
 	dispatch(action) {
-		if (action.type === ADD_NEW_POST) {
-			const newPost = {
-				text: this._state.profilePage.postTextareaValue,
-				id: this._state.profilePage.postsData.length + 1,
-				likeCount: 0,
-			};
-			this._state.profilePage.postsData.push(newPost);
-			this._callSubscriber(this._state);
-		} else if (action.type === ON_NEW_POST_CHANGE) {
-			this._state.profilePage.postTextareaValue = action.post;
-			this._callSubscriber(this._state);
-		} else if (action.type === SEND_NEW_MESSAGE) {
-			const newMessage = {
-				message: this._state.dialogsPage.dialogsSendMessageValue,
-				id: this._state.dialogsPage.dialogsMessagesData.length + 1,
-			};
-			this._state.dialogsPage.dialogsMessagesData.push(newMessage);
-			this._callSubscriber(this._state);
-		} else if (action.type === ON_CHANGE_MESSAGE) {
-			this._state.dialogsPage.dialogsSendMessageValue = action.message;
-			this._callSubscriber(this._state);
-		}
+		this._state.profilePage = profilePageReducer(
+			this._state.profilePage,
+			action
+		);
+		this._state.dialogsPage = dialogsPageReducer(
+			this._state.dialogsPage,
+			action
+		);
+		this._callSubscriber(this._state);
 	},
 };
-
-const ADD_NEW_POST = 'ADD-NEW-POST';
-const ON_NEW_POST_CHANGE = 'ON-NEW-POST-CHANGE';
-const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE';
-const ON_CHANGE_MESSAGE = 'ON-CHANGE-MESSAGE';
-
-export const addNewPostActionCreator = () => ({ type: ADD_NEW_POST });
-
-export const onNewPostChangeActionCreator = newPostText => ({
-	type: ON_NEW_POST_CHANGE,
-	post: newPostText,
-});
-
-export const sendNewMessageActionCreator = () => ({ type: SEND_NEW_MESSAGE });
-
-export const onChangeMessageActionCreator = sendMessageValue => ({
-	type: ON_CHANGE_MESSAGE,
-	message: sendMessageValue,
-});
 
 export default store;

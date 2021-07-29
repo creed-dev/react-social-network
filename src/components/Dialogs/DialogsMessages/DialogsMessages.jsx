@@ -3,7 +3,7 @@ import React from 'react';
 import {
 	onChangeMessageActionCreator,
 	sendNewMessageActionCreator,
-} from '../../../redux/state';
+} from '../../../redux/dialogsPage-reducer';
 
 const DialogsMessages = props => {
 	const renderDialogMessages = props.dialogsMessagesData.map(message => (
