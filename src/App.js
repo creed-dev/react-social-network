@@ -11,21 +11,11 @@ import Settings from './components/Settings/Settings';
 
 const App = props => {
 	const renderDialogs = () => (
-		<Dialogs
-			dialogsPage={props.state.dialogsPage}
-			dispatch={props.dispatch}
-			// sendNewMessage={props.sendNewMessage}
-			// onChangeMessage={props.onChangeMessage}
-		/>
+		<Dialogs dialogsPage={props.state.dialogsPage} dispatch={props.dispatch} />
 	);
 
 	const renderProfile = () => (
-		<Profile
-			profilePage={props.state.profilePage}
-			dispatch={props.dispatch}
-			// addNewPost={props.addNewPost}
-			// onNewPostChange={props.onNewPostChange}
-		/>
+		<Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />
 	);
 
 	return (

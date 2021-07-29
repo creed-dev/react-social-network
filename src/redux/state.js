@@ -76,31 +76,6 @@ let store = {
 			this._callSubscriber(this._state);
 		}
 	},
-	// addNewPost() {
-	// 	const newPost = {
-	// 		text: this._state.profilePage.postTextareaValue,
-	// 		id: this._state.profilePage.postsData.length + 1,
-	// 		likeCount: 0,
-	// 	};
-	// 	this._state.profilePage.postsData.push(newPost);
-	// 	this._callSubscriber(this._state);
-	// },
-	// onNewPostChange(post) {
-	// 	this._state.profilePage.postTextareaValue = post;
-	// 	this._callSubscriber(this._state);
-	// },
-	// sendNewMessage() {
-	// 	const newMessage = {
-	// 		message: this._state.dialogsPage.dialogsSendMessageValue,
-	// 		id: this._state.dialogsPage.dialogsMessagesData.length + 1,
-	// 	};
-	// 	this._state.dialogsPage.dialogsMessagesData.push(newMessage);
-	// 	this._callSubscriber(this._state);
-	// },
-	// onChangeMessage(message) {
-	// 	this._state.dialogsPage.dialogsSendMessageValue = message;
-	// 	this._callSubscriber(this._state);
-	// },
 };
 
 const ADD_NEW_POST = 'ADD-NEW-POST';

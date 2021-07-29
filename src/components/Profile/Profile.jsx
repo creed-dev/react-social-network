@@ -20,8 +20,6 @@ const Profile = props => {
 				postsData={props.profilePage.postsData}
 				postTextareaValue={props.profilePage.postTextareaValue}
 				dispatch={props.dispatch}
-				// addNewPost={props.addNewPost}
-				// onNewPostChange={props.onNewPostChange}
 			/>
 		</div>
 	);

@@ -10,14 +10,7 @@ const renderApp = state => {
 	ReactDOM.render(
 		<React.StrictMode>
 			<BrowserRouter>
-				<App
-					state={state}
-					dispatch={store.dispatch.bind(store)}
-					// addNewPost={store.addNewPost.bind(store)}
-					// onNewPostChange={store.onNewPostChange.bind(store)}
-					// sendNewMessage={store.sendNewMessage.bind(store)}
-					// onChangeMessage={store.onChangeMessage.bind(store)}
-				/>
+				<App state={state} dispatch={store.dispatch.bind(store)} />
 			</BrowserRouter>
 		</React.StrictMode>,
 		document.getElementById('root')
