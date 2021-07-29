@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+	addNewPostActionCreator,
+	onNewPostChangeActionCreator,
+} from '../../../redux/state';
 import Post from './Post/Post';
 
 const Posts = props => {
@@ -8,13 +12,13 @@ const Posts = props => {
 
 	const newPostTextarea = React.createRef();
 	const addNewPost = () => {
-		props.addNewPost();
-		props.onNewPostChange('');
+		props.dispatch(addNewPostActionCreator());
+		props.dispatch(onNewPostChangeActionCreator(''));
 	};
 
 	const onNewPostChange = () => {
 		const newPostText = newPostTextarea.current.value;
-		props.onNewPostChange(newPostText);
+		props.dispatch(onNewPostChangeActionCreator(newPostText));
 	};
 
 	return (

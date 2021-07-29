@@ -8,8 +8,9 @@ const Dialogs = props => {
 			<DialogsMessages
 				dialogsMessagesData={props.dialogsPage.dialogsMessagesData}
 				dialogsSendMessageValue={props.dialogsPage.dialogsSendMessageValue}
-				sendNewMessage={props.sendNewMessage}
-				onChangeMessage={props.onChangeMessage}
+				dispatch={props.dispatch}
+				// sendNewMessage={props.sendNewMessage}
+				// onChangeMessage={props.onChangeMessage}
 			/>
 		</div>
 	);

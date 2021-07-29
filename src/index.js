@@ -12,10 +12,11 @@ const renderApp = state => {
 			<BrowserRouter>
 				<App
 					state={state}
-					addNewPost={store.addNewPost.bind(store)}
-					onNewPostChange={store.onNewPostChange.bind(store)}
-					sendNewMessage={store.sendNewMessage.bind(store)}
-					onChangeMessage={store.onChangeMessage.bind(store)}
+					dispatch={store.dispatch.bind(store)}
+					// addNewPost={store.addNewPost.bind(store)}
+					// onNewPostChange={store.onNewPostChange.bind(store)}
+					// sendNewMessage={store.sendNewMessage.bind(store)}
+					// onChangeMessage={store.onChangeMessage.bind(store)}
 				/>
 			</BrowserRouter>
 		</React.StrictMode>,

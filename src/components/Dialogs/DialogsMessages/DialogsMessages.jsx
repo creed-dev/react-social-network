@@ -1,5 +1,9 @@
 import DialogsMessagesItem from './DialogsMessagesItem/DialogsMessagesItem';
 import React from 'react';
+import {
+	onChangeMessageActionCreator,
+	sendNewMessageActionCreator,
+} from '../../../redux/state';
 
 const DialogsMessages = props => {
 	const renderDialogMessages = props.dialogsMessagesData.map(message => (
@@ -9,13 +13,13 @@ const DialogsMessages = props => {
 	const sendMessageTextarea = React.createRef();
 
 	const sendNewMessage = () => {
-		props.sendNewMessage();
-		props.onChangeMessage('');
+		props.dispatch(sendNewMessageActionCreator());
+		props.dispatch(onChangeMessageActionCreator(''));
 	};
 
 	const onChangeMessage = () => {
 		const sendMessageValue = sendMessageTextarea.current.value;
-		props.onChangeMessage(sendMessageValue);
+		props.dispatch(onChangeMessageActionCreator(sendMessageValue));
 	};
 
 	return (

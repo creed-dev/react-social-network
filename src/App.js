@@ -13,16 +13,18 @@ const App = props => {
 	const renderDialogs = () => (
 		<Dialogs
 			dialogsPage={props.state.dialogsPage}
-			sendNewMessage={props.sendNewMessage}
-			onChangeMessage={props.onChangeMessage}
+			dispatch={props.dispatch}
+			// sendNewMessage={props.sendNewMessage}
+			// onChangeMessage={props.onChangeMessage}
 		/>
 	);
 
 	const renderProfile = () => (
 		<Profile
 			profilePage={props.state.profilePage}
-			addNewPost={props.addNewPost}
-			onNewPostChange={props.onNewPostChange}
+			dispatch={props.dispatch}
+			// addNewPost={props.addNewPost}
+			// onNewPostChange={props.onNewPostChange}
 		/>
 	);
 
