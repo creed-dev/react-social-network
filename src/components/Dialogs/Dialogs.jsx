@@ -1,15 +1,13 @@
-import DialogsMessages from './DialogsMessages/DialogsMessages';
+import DialogsMessagesContainer from './DialogsMessages/DialogsMessagesContainer';
 import DialogsName from './DialogsName/DialogsName';
 
 const Dialogs = props => {
 	return (
 		<div className="dialogs">
-			<DialogsName dialogsName={props.dialogsPage.dialogsName} />
-			<DialogsMessages
-				dialogsMessagesData={props.dialogsPage.dialogsMessagesData}
-				dialogsSendMessageValue={props.dialogsPage.dialogsSendMessageValue}
-				dispatch={props.dispatch}
+			<DialogsName
+				dialogsName={props.store.getState().dialogsPage.dialogsName}
 			/>
+			<DialogsMessagesContainer store={props.store} />
 		</div>
 	);
 };

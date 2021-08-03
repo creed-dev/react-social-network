@@ -1,24 +1,19 @@
 import React from 'react';
-import {
-	addNewPostActionCreator,
-	onNewPostChangeActionCreator,
-} from '../../../redux/profilePage-reducer';
 import Post from './Post/Post';
 
 const Posts = props => {
-	const renderPosts = props.postsData.map(post => (
+	const renderPosts = props.posts.map(post => (
 		<Post text={post.text} id={post.id} likeCount={post.likeCount} />
 	));
 
 	const newPostTextarea = React.createRef();
 	const addNewPost = () => {
-		props.dispatch(addNewPostActionCreator());
-		props.dispatch(onNewPostChangeActionCreator(''));
+		props.addNewPost();
 	};
 
 	const onNewPostChange = () => {
 		const newPostText = newPostTextarea.current.value;
-		props.dispatch(onNewPostChangeActionCreator(newPostText));
+		props.onNewPostChange(newPostText);
 	};
 
 	return (

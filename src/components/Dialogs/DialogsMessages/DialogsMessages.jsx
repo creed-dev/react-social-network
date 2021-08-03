@@ -13,13 +13,12 @@ const DialogsMessages = props => {
 	const sendMessageTextarea = React.createRef();
 
 	const sendNewMessage = () => {
-		props.dispatch(sendNewMessageActionCreator());
-		props.dispatch(onChangeMessageActionCreator(''));
+		props.sendNewMessage();
 	};
 
 	const onChangeMessage = () => {
 		const sendMessageValue = sendMessageTextarea.current.value;
-		props.dispatch(onChangeMessageActionCreator(sendMessageValue));
+		props.onChangeMessage(sendMessageValue);
 	};
 
 	return (
