@@ -1,7 +1,16 @@
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const ON_NEW_POST_CHANGE = 'ON-NEW-POST-CHANGE';
 
-const profilePageReducer = (state, action) => {
+const initialState = {
+	postsData: [
+		{ text: 'Hi!', id: 1, likeCount: 24 },
+		{ text: 'Yo!', id: 2, likeCount: 32 },
+		{ text: 'Olla!', id: 3, likeCount: 48 },
+	],
+	postTextareaValue: '',
+};
+
+const profilePageReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_NEW_POST:
 			const newPost = {
