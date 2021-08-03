@@ -10,9 +10,9 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 
 const App = props => {
-	const renderDialogs = () => <Dialogs store={props.store} />;
+	const renderDialogs = () => <Dialogs />;
 
-	const renderProfile = () => <Profile store={props.store} />;
+	const renderProfile = () => <Profile />;
 
 	return (
 		<div className="container">
