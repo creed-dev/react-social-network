@@ -15,6 +15,15 @@ const Navbar = () => {
 				</li>
 				<li>
 					<NavLink
+						to="/users"
+						className="navbar__item"
+						activeClassName="navbar__item_active"
+					>
+						Users
+					</NavLink>
+				</li>
+				<li>
+					<NavLink
 						to="/dialogs"
 						className="navbar__item"
 						activeClassName="navbar__item_active"
