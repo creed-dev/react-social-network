@@ -3,12 +3,14 @@ const UNSUBSCRIBE = 'UNSUBSCRIBE';
 const SET_USERS = 'SET-USERS';
 const SET_PAGE_NUMBER = 'SET-PAGE-NUMBER';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
+const TOGGLE_FETCHING = 'TOGGLE-FETCHING';
 
 const initialState = {
 	users: [],
 	pageSize: 50,
 	totalUsersCount: 0,
 	currentPage: 1,
+	isFetching: false,
 };
 
 const usersPageReducer = (state = initialState, action) => {
@@ -39,6 +41,8 @@ const usersPageReducer = (state = initialState, action) => {
 			return { ...state, currentPage: action.pageNumber };
 		case SET_TOTAL_USERS_COUNT:
 			return { ...state, totalUsersCount: action.usersCount };
+		case TOGGLE_FETCHING:
+			return { ...state, isFetching: action.isFetching };
 		default:
 			return state;
 	}
@@ -58,6 +62,10 @@ export const setPageNumberActionCreator = pageNumber => ({
 export const setTotalUsersCountActionCreator = usersCount => ({
 	type: SET_TOTAL_USERS_COUNT,
 	usersCount,
+});
+export const toggleFetchingActionCreator = isFetching => ({
+	type: TOGGLE_FETCHING,
+	isFetching,
 });
 
 export default usersPageReducer;
