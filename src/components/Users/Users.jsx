@@ -40,11 +40,7 @@ const Users = props => {
 			</div>
 			<div className="user__info">
 				<div className="user__descr">
-					<div className="user__descr-name">
-						{user.name}
-						{/* &nbsp;
-						{user.fullName.surname} */}
-					</div>
+					<div className="user__descr-name">{user.name}</div>
 					<div className="user__descr-status">{user.status}</div>
 				</div>
 				<div className="user__location">

@@ -4,7 +4,7 @@ import {
 	subscribeActionCreator,
 	unsubscribeActionCreator,
 } from '../../redux/usersPage-reducer';
-import Users from './Users';
+import UsersClass from './UsersClass';
 
 const mapStateToProps = state => {
 	return {
@@ -20,6 +20,6 @@ const mapDispatchToProps = dispatch => {
 	};
 };
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersClass);
 
 export default UsersContainer;
