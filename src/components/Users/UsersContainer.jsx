@@ -1,3 +1,5 @@
+import React from 'react';
+import * as axios from 'axios';
 import { connect } from 'react-redux';
 import {
 	setPageNumberActionCreator,
@@ -6,7 +8,45 @@ import {
 	subscribeActionCreator,
 	unsubscribeActionCreator,
 } from '../../redux/usersPage-reducer';
-import UsersClass from './UsersClass';
+import User from './Users';
+
+class UsersClass extends React.Component {
+	componentDidMount() {
+		axios
+			.get(
+				`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
+			)
+			.then(response => {
+				this.props.setUsers(response.data.items);
+				this.props.setTotalUsersCount(response.data.totalCount);
+			});
+	}
+
+	onPageChanged = page => {
+		this.props.setPageNumber(page);
+		axios
+			.get(
+				`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`
+			)
+			.then(response => {
+				this.props.setUsers(response.data.items);
+			});
+	};
+
+	render() {
+		return (
+			<User
+				totalUsersCount={this.props.totalUsersCount}
+				pageSize={this.props.pageSize}
+				currentPage={this.props.currentPage}
+				onPageChanged={this.onPageChanged}
+				users={this.props.users}
+				unsubscribe={this.props.unsubscribe}
+				subscribe={this.props.subscribe}
+			/>
+		);
+	}
+}
 
 const mapStateToProps = state => {
 	return {
