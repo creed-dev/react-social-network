@@ -3,19 +3,55 @@ import userAvatar from '../../assets/img/user-logo.png';
 import React from 'react';
 
 class UsersClass extends React.Component {
-	constructor(props) {
-		super(props);
-
+	componentDidMount() {
 		axios
-			.get('https://social-network.samuraijs.com/api/1.0/users')
+			.get(
+				`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
+			)
 			.then(response => {
 				this.props.setUsers(response.data.items);
+				this.props.setTotalUsersCount(response.data.totalCount);
 			});
 	}
 
+	onPageChanged = page => {
+		this.props.setPageNumber(page);
+		axios
+			.get(
+				`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`
+			)
+			.then(response => {
+				this.props.setUsers(response.data.items);
+			});
+	};
+
 	render() {
+		const pagesCount = Math.ceil(
+			this.props.totalUsersCount / this.props.pageSize
+		);
+
+		const pages = [];
+
+		for (let i = 1; i <= pagesCount; i++) {
+			pages.push(i);
+		}
+
 		return (
 			<div className="users">
+				{pages.map(page => {
+					return (
+						<button
+							className={
+								this.props.currentPage === page
+									? 'users__page users__page_active'
+									: 'users__page '
+							}
+							onClick={() => this.onPageChanged(page)}
+						>
+							{page}
+						</button>
+					);
+				})}
 				{this.props.users.map(user => (
 					<div className="user">
 						<div className="user__action">

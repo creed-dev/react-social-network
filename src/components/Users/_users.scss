@@ -1,6 +1,14 @@
 .users {
 	padding: 10px;
 	background-color: #026b6e;
+
+	&__page {
+		margin-bottom: 10px;
+		margin-right: 5px;
+		&_active {
+			font-weight: 900;
+		}
+	}
 }
 
 .user {
