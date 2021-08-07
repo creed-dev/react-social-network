@@ -1,11 +1,17 @@
 .header {
-    display: flex;
-    height: 40px;
-    background-color: #1e042b;
-    align-items: center;
+	display: flex;
+	height: 40px;
+	background-color: #1e042b;
+	align-items: center;
+	justify-content: space-between;
 
-    &__logo {
-        margin-left: 10px;
-        color: white;
-    }
+	&__logo {
+		margin-left: 10px;
+		color: white;
+	}
+
+	&__auth {
+		color: white;
+		margin-right: 10px;
+	}
 }

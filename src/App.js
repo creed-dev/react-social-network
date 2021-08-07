@@ -2,13 +2,13 @@ import logo from './logo.svg';
 import './css/App.min.css';
 import { Route } from 'react-router-dom';
 
-import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Dialogs from './components/Dialogs/Dialogs';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 const App = props => {
 	const renderDialogs = () => <Dialogs />;
@@ -18,11 +18,11 @@ const App = props => {
 
 	return (
 		<div className="container">
-			<Header />
+			<HeaderContainer />
 			<div className="wrapper">
 				<Navbar />
 				<div className="main">
-					<Route path="/profile" render={renderProfile} />
+					<Route path="/profile/:userId?" render={renderProfile} />
 					<Route path="/dialogs" render={renderDialogs} />
 					<Route path="/music" component={Music} />
 					<Route path="/settings" component={Settings} />
