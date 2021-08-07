@@ -1,7 +1,9 @@
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const ON_NEW_POST_CHANGE = 'ON-NEW-POST-CHANGE';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 const initialState = {
+	profile: null,
 	postsData: [
 		{ text: 'Hi!', id: 1, likeCount: 24 },
 		{ text: 'Yo!', id: 2, likeCount: 32 },
@@ -28,6 +30,11 @@ const profilePageReducer = (state = initialState, action) => {
 				...state,
 				postTextareaValue: action.post,
 			};
+		case SET_USER_PROFILE:
+			return {
+				...state,
+				profile: action.profile,
+			};
 		default:
 			return state;
 	}
@@ -38,6 +45,11 @@ export const addNewPostActionCreator = () => ({ type: ADD_NEW_POST });
 export const onNewPostChangeActionCreator = newPostText => ({
 	type: ON_NEW_POST_CHANGE,
 	post: newPostText,
+});
+
+export const setUserProfileActionCreator = profile => ({
+	type: SET_USER_PROFILE,
+	profile,
 });
 
 export default profilePageReducer;

@@ -1,16 +1,33 @@
+import Preloader from '../../common/Preloader/Preloader';
+import userAvatar from '../../../assets/img/user-logo.png';
+
 const ProfileInfo = props => {
+	if (!props.profile) {
+		return <Preloader />;
+	}
+
 	return (
 		<div className="profile-info">
 			<img
-				src="https://img1.goodfon.ru/wallpaper/nbig/6/4d/avatar-neytiri-zoe-saldana-7414.jpg"
+				src={
+					props.profile.photos.small != null
+						? props.profile.photos.small
+						: userAvatar
+				}
 				alt="avatar"
 				className="profile-info__avatar"
 			/>
 			<div className="profile-info__descr">
-				<div className="profile-info__descr-item">Name: Ilya</div>
-				<div className="profile-info__descr-item">Surname: Chupin</div>
-				<div className="profile-info__descr-item">Age: 23</div>
+				<div className="profile-info__descr-item">
+					Fullname: {props.profile.fullName}
+				</div>
+				<div className="profile-info__descr-item">
+					Looking for a job: {props.profile.lookingForAJob ? 'Ищу' : 'Не ищу'}
+				</div>
 				<div className="profile-info__descr-item">Education: Higher</div>
+				<div className="profile-info__descr-item">
+					Status: {props.profile.aboutMe}
+				</div>
 			</div>
 		</div>
 	);
