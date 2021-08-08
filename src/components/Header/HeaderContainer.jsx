@@ -1,17 +1,11 @@
 import React from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
-import { setUserAuthActionCreator } from '../../redux/auth-reducer';
-import { headerAPI } from '../../api/api';
+import { isLogged } from '../../redux/auth-reducer';
 
 class HeaderContainer extends React.Component {
 	componentDidMount() {
-		headerAPI.isAuth().then(data => {
-			if (data.resultCode === 0) {
-				const { email, id, login } = data.data;
-				this.props.setAuthUser(id, login, email);
-			}
-		});
+		this.props.isLogged();
 	}
 
 	render() {
@@ -34,8 +28,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		setAuthUser: (id, login, email) =>
-			dispatch(setUserAuthActionCreator(id, login, email)),
+		isLogged: () => dispatch(isLogged),
 	};
 };
 

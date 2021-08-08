@@ -1,37 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
-	followingInProgressActionCreator,
-	setPageNumberActionCreator,
-	setTotalUsersCountActionCreator,
-	setUsersActionCreator,
-	subscribeActionCreator,
-	toggleFetchingActionCreator,
-	unsubscribeActionCreator,
+	getUsers,
+	changedPage,
+	unsubscribe,
+	subscribe,
 } from '../../redux/usersPage-reducer';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
-import { usersAPI } from '../../api/api';
 
 class UsersContainer extends React.Component {
 	componentDidMount() {
-		this.props.toggleIsFetching(true);
-		usersAPI
-			.getPages(this.props.currentPage, this.props.pageSize)
-			.then(data => {
-				this.props.setUsers(data.items);
-				this.props.setTotalUsersCount(data.totalCount);
-				this.props.toggleIsFetching(false);
-			});
+		this.props.getUsers(this.props.currentPage, this.props.pageSize);
 	}
 
 	onPageChanged = page => {
-		this.props.setPageNumber(page);
-		this.props.toggleIsFetching(true);
-		usersAPI.setPage(page, this.props.pageSize).then(data => {
-			this.props.setUsers(data.items);
-			this.props.toggleIsFetching(false);
-		});
+		this.props.changedPage(page, this.props.pageSize);
 	};
 
 	render() {
@@ -67,17 +51,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		subscribe: userId => dispatch(subscribeActionCreator(userId)),
-		unsubscribe: userId => dispatch(unsubscribeActionCreator(userId)),
-		setUsers: users => dispatch(setUsersActionCreator(users)),
-		setPageNumber: pageNumber =>
-			dispatch(setPageNumberActionCreator(pageNumber)),
-		setTotalUsersCount: usersCount =>
-			dispatch(setTotalUsersCountActionCreator(usersCount)),
-		toggleIsFetching: isFetching =>
-			dispatch(toggleFetchingActionCreator(isFetching)),
-		toggleFollowingProgress: (inProgress, userId) =>
-			dispatch(followingInProgressActionCreator(inProgress, userId)),
+		subscribe: userId => dispatch(subscribe(userId)),
+		unsubscribe: userId => dispatch(unsubscribe(userId)),
+		getUsers: (currentPage, pageSize) =>
+			dispatch(getUsers(currentPage, pageSize)),
+		changedPage: (page, pageSize) => dispatch(changedPage(page, pageSize)),
 	};
 };
 

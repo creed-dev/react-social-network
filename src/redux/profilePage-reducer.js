@@ -1,3 +1,5 @@
+import { profileAPI } from '../api/api';
+
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const ON_NEW_POST_CHANGE = 'ON-NEW-POST-CHANGE';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -51,5 +53,16 @@ export const setUserProfileActionCreator = profile => ({
 	type: SET_USER_PROFILE,
 	profile,
 });
+
+export const getProfile = userId => {
+	return dispatch => {
+		if (!userId) {
+			userId = 2;
+		}
+		profileAPI.getProfile(userId).then(data => {
+			dispatch(setUserProfileActionCreator(data));
+		});
+	};
+};
 
 export default profilePageReducer;

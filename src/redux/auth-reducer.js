@@ -1,3 +1,5 @@
+import { headerAPI } from '../api/api';
+
 const SET_USER_AUTH = 'SET-USER-AUTH';
 
 const initialState = {
@@ -28,5 +30,14 @@ export const setUserAuthActionCreator = (id, login, email) => ({
 		email,
 	},
 });
+
+export const isLogged = dispatch => {
+	headerAPI.isAuth().then(data => {
+		if (data.resultCode === 0) {
+			const { email, id, login } = data.data;
+			dispatch(setUserAuthActionCreator(id, login, email));
+		}
+	});
+};
 
 export default authReducer;
