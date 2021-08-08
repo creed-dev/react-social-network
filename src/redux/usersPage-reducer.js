@@ -84,50 +84,42 @@ export const followingInProgressActionCreator = (inProgress, userId) => ({
 	userId,
 });
 
-export const getUsers = (currentPage, pageSize) => {
-	return dispatch => {
-		dispatch(toggleFetchingActionCreator(true));
-		usersAPI.getPages(currentPage, pageSize).then(data => {
-			dispatch(setUsersActionCreator(data.items));
-			dispatch(setTotalUsersCountActionCreator(data.totalCount));
-			dispatch(toggleFetchingActionCreator(false));
-		});
-	};
+export const getUsers = (currentPage, pageSize) => dispatch => {
+	dispatch(toggleFetchingActionCreator(true));
+	usersAPI.getPages(currentPage, pageSize).then(data => {
+		dispatch(setUsersActionCreator(data.items));
+		dispatch(setTotalUsersCountActionCreator(data.totalCount));
+		dispatch(toggleFetchingActionCreator(false));
+	});
 };
 
-export const changedPage = (page, pageSize) => {
-	return dispatch => {
-		dispatch(setPageNumberActionCreator(page));
-		dispatch(toggleFetchingActionCreator(true));
-		usersAPI.setPage(page, pageSize).then(data => {
-			dispatch(setUsersActionCreator(data.items));
-			dispatch(toggleFetchingActionCreator(false));
-		});
-	};
+export const changedPage = (page, pageSize) => dispatch => {
+	dispatch(setPageNumberActionCreator(page));
+	dispatch(toggleFetchingActionCreator(true));
+	usersAPI.setPage(page, pageSize).then(data => {
+		dispatch(setUsersActionCreator(data.items));
+		dispatch(toggleFetchingActionCreator(false));
+	});
 };
 
-export const unsubscribe = userId => {
-	return dispatch => {
-		dispatch(followingInProgressActionCreator(true, userId));
-		usersAPI.unfollow(userId).then(data => {
-			if (data.resultCode === 0) {
-				dispatch(unsubscribeActionCreator(userId));
-			}
-			dispatch(followingInProgressActionCreator(false, userId));
-		});
-	};
+export const unsubscribe = userId => dispatch => {
+	dispatch(followingInProgressActionCreator(true, userId));
+	usersAPI.unfollow(userId).then(data => {
+		if (data.resultCode === 0) {
+			dispatch(unsubscribeActionCreator(userId));
+		}
+		dispatch(followingInProgressActionCreator(false, userId));
+	});
 };
 
-export const subscribe = userId => {
-	return dispatch => {
-		dispatch(followingInProgressActionCreator(true, userId));
-		usersAPI.follow(userId).then(data => {
-			if (data.resultCode === 0) {
-				dispatch(subscribeActionCreator(userId));
-			}
-			dispatch(followingInProgressActionCreator(false, userId));
-		});
-	};
+export const subscribe = userId => dispatch => {
+	dispatch(followingInProgressActionCreator(true, userId));
+	usersAPI.follow(userId).then(data => {
+		if (data.resultCode === 0) {
+			dispatch(subscribeActionCreator(userId));
+		}
+		dispatch(followingInProgressActionCreator(false, userId));
+	});
 };
 
 export default usersPageReducer;
