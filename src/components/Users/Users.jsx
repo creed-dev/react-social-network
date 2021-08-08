@@ -42,8 +42,8 @@ const User = props => {
 						{user.followed ? (
 							<button
 								onClick={() => {
-									usersAPI.unfollow(user.id).then(response => {
-										if (response.data.resultCode === 0) {
+									usersAPI.unfollow(user.id).then(data => {
+										if (data.resultCode === 0) {
 											props.unsubscribe(user.id);
 										}
 									});
@@ -55,8 +55,8 @@ const User = props => {
 						) : (
 							<button
 								onClick={() => {
-									usersAPI.follow(user.id).then(response => {
-										if (response.data.resultCode === 0) {
+									usersAPI.follow(user.id).then(data => {
+										if (data.resultCode === 0) {
 											props.subscribe(user.id);
 										}
 									});

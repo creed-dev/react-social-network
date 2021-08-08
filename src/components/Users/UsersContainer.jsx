@@ -17,9 +17,9 @@ class UsersContainer extends React.Component {
 		this.props.toggleIsFetching(true);
 		usersAPI
 			.getPages(this.props.currentPage, this.props.pageSize)
-			.then(response => {
-				this.props.setUsers(response.data.items);
-				this.props.setTotalUsersCount(response.data.totalCount);
+			.then(data => {
+				this.props.setUsers(data.items);
+				this.props.setTotalUsersCount(data.totalCount);
 				this.props.toggleIsFetching(false);
 			});
 	}
@@ -27,8 +27,8 @@ class UsersContainer extends React.Component {
 	onPageChanged = page => {
 		this.props.setPageNumber(page);
 		this.props.toggleIsFetching(true);
-		usersAPI.setPage(page, this.props.pageSize).then(response => {
-			this.props.setUsers(response.data.items);
+		usersAPI.setPage(page, this.props.pageSize).then(data => {
+			this.props.setUsers(data.items);
 			this.props.toggleIsFetching(false);
 		});
 	};

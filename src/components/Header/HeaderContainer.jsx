@@ -6,9 +6,9 @@ import { headerAPI } from '../../api/api';
 
 class HeaderContainer extends React.Component {
 	componentDidMount() {
-		headerAPI.isAuth().then(response => {
-			if (response.data.resultCode === 0) {
-				const { email, id, login } = response.data.data;
+		headerAPI.isAuth().then(data => {
+			if (data.resultCode === 0) {
+				const { email, id, login } = data.data;
 				this.props.setAuthUser(id, login, email);
 			}
 		});

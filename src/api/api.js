@@ -8,27 +8,31 @@ const instance = axios.create({
 
 export const profileAPI = {
 	getProfile(userId) {
-		return instance.get(`profile/${userId}`);
+		return instance.get(`profile/${userId}`).then(response => response.data);
 	},
 };
 
 export const usersAPI = {
 	getPages(currentPage, pageSize) {
-		return instance.get(`users?page=${currentPage}&count=${pageSize}`);
+		return instance
+			.get(`users?page=${currentPage}&count=${pageSize}`)
+			.then(response => response.data);
 	},
 	setPage(page, pageSize) {
-		return instance.get(`users?page=${page}&count=${pageSize}`);
+		return instance
+			.get(`users?page=${page}&count=${pageSize}`)
+			.then(response => response.data);
 	},
 	unfollow(userId) {
-		return instance.delete(`follow/${userId}`);
+		return instance.delete(`follow/${userId}`).then(response => response.data);
 	},
 	follow(userId) {
-		return instance.post(`follow/${userId}`);
+		return instance.post(`follow/${userId}`).then(response => response.data);
 	},
 };
 
 export const headerAPI = {
 	isAuth() {
-		return instance.get('auth/me');
+		return instance.get('auth/me').then(response => response.data);
 	},
 };
