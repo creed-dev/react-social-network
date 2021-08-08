@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import userAvatar from '../../assets/img/user-logo.png';
-import * as axios from 'axios';
 import { usersAPI } from '../../api/api';
 
 const User = props => {
@@ -41,11 +40,14 @@ const User = props => {
 						</NavLink>
 						{user.followed ? (
 							<button
+								disabled={props.followingInProgress.some(id => id === user.id)}
 								onClick={() => {
+									props.toggleFollowingProgress(true, user.id);
 									usersAPI.unfollow(user.id).then(data => {
 										if (data.resultCode === 0) {
 											props.unsubscribe(user.id);
 										}
+										props.toggleFollowingProgress(false, user.id);
 									});
 								}}
 								className="user__btn"
@@ -54,11 +56,14 @@ const User = props => {
 							</button>
 						) : (
 							<button
+								disabled={props.followingInProgress.some(id => id === user.id)}
 								onClick={() => {
+									props.toggleFollowingProgress(true, user.id);
 									usersAPI.follow(user.id).then(data => {
 										if (data.resultCode === 0) {
 											props.subscribe(user.id);
 										}
+										props.toggleFollowingProgress(false, user.id);
 									});
 								}}
 								className="user__btn"

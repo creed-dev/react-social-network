@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
+	followingInProgressActionCreator,
 	setPageNumberActionCreator,
 	setTotalUsersCountActionCreator,
 	setUsersActionCreator,
@@ -45,6 +46,8 @@ class UsersContainer extends React.Component {
 					users={this.props.users}
 					unsubscribe={this.props.unsubscribe}
 					subscribe={this.props.subscribe}
+					followingInProgress={this.props.followingInProgress}
+					toggleFollowingProgress={this.props.toggleFollowingProgress}
 				/>
 			</>
 		);
@@ -58,6 +61,7 @@ const mapStateToProps = state => {
 		totalUsersCount: state.usersPage.totalUsersCount,
 		currentPage: state.usersPage.currentPage,
 		isFetching: state.usersPage.isFetching,
+		followingInProgress: state.usersPage.followingInProgress,
 	};
 };
 
@@ -72,6 +76,8 @@ const mapDispatchToProps = dispatch => {
 			dispatch(setTotalUsersCountActionCreator(usersCount)),
 		toggleIsFetching: isFetching =>
 			dispatch(toggleFetchingActionCreator(isFetching)),
+		toggleFollowingProgress: (inProgress, userId) =>
+			dispatch(followingInProgressActionCreator(inProgress, userId)),
 	};
 };
 
