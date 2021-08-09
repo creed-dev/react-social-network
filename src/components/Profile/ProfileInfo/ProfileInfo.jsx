@@ -1,5 +1,6 @@
 import Preloader from '../../common/Preloader/Preloader';
 import userAvatar from '../../../assets/img/user-logo.png';
+import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 const ProfileInfo = props => {
 	if (!props.profile) {
@@ -25,9 +26,7 @@ const ProfileInfo = props => {
 					Looking for a job: {props.profile.lookingForAJob ? 'Ищу' : 'Не ищу'}
 				</div>
 				<div className="profile-info__descr-item">Education: Higher</div>
-				<div className="profile-info__descr-item">
-					Status: {props.profile.aboutMe}
-				</div>
+				<ProfileStatus status={props.profile.aboutMe} />
 			</div>
 		</div>
 	);
