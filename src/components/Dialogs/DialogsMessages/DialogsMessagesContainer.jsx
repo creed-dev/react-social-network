@@ -1,27 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-	onChangeMessageActionCreator,
-	sendNewMessageActionCreator,
-} from '../../../redux/dialogsPage-reducer';
+import { sendNewMessageActionCreator } from '../../../redux/dialogsPage-reducer';
 import DialogsMessages from './DialogsMessages';
 
 const mapStateToProps = state => {
 	return {
 		dialogsMessagesData: state.dialogsPage.dialogsMessagesData,
-		dialogsSendMessageValue: state.dialogsPage.dialogsSendMessageValue,
 		isAuth: state.auth.isAuth,
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		sendNewMessage: () => {
-			dispatch(sendNewMessageActionCreator());
-			dispatch(onChangeMessageActionCreator(''));
-		},
-		onChangeMessage: sendMessageValue => {
-			dispatch(onChangeMessageActionCreator(sendMessageValue));
+		sendNewMessage2: text => {
+			dispatch(sendNewMessageActionCreator(text));
 		},
 	};
 };

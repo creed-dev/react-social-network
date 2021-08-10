@@ -1,5 +1,4 @@
 const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE';
-const ON_CHANGE_MESSAGE = 'ON-CHANGE-MESSAGE';
 
 const initialState = {
 	dialogsName: [
@@ -39,7 +38,7 @@ const dialogsPageReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case SEND_NEW_MESSAGE: {
 			const newMessage = {
-				message: state.dialogsSendMessageValue,
+				message: action.text,
 				id: state.dialogsMessagesData.length + 1,
 			};
 			return {
@@ -47,21 +46,14 @@ const dialogsPageReducer = (state = initialState, action) => {
 				dialogsMessagesData: [...state.dialogsMessagesData, newMessage],
 			};
 		}
-		case ON_CHANGE_MESSAGE:
-			return {
-				...state,
-				dialogsSendMessageValue: action.message,
-			};
 		default:
 			return state;
 	}
 };
 
-export const sendNewMessageActionCreator = () => ({ type: SEND_NEW_MESSAGE });
-
-export const onChangeMessageActionCreator = sendMessageValue => ({
-	type: ON_CHANGE_MESSAGE,
-	message: sendMessageValue,
+export const sendNewMessageActionCreator = text => ({
+	type: SEND_NEW_MESSAGE,
+	text,
 });
 
 export default dialogsPageReducer;
