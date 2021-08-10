@@ -1,6 +1,6 @@
 import DialogsMessagesItem from './DialogsMessagesItem/DialogsMessagesItem';
 import React from 'react';
-import { DialogsMessageReduxForm } from './DialogsMessagesReduxForm/DialogsMessagesReduxForm';
+import { DialogsMessageReduxForm } from './DialogsMessageReduxForm/DialogsMessageReduxForm';
 
 const DialogsMessages = props => {
 	const renderDialogMessages = props.dialogsMessagesData.map(message => (
