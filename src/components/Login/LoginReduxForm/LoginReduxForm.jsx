@@ -8,8 +8,8 @@ const LoginForm = props => {
 			<Field
 				component={InputLogin}
 				className="login__form-item"
-				placeholder="Login"
-				name="login"
+				placeholder="Email"
+				name="email"
 				validate={[required]}
 			/>
 			<Field
@@ -18,6 +18,7 @@ const LoginForm = props => {
 				placeholder="Password"
 				name="password"
 				validate={[required]}
+				type="password"
 			/>
 			<div className="login__form-item">
 				<Field component="Input" type="checkbox" name="rememberMe" />

@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
-import { isLogged } from '../../redux/auth-reducer';
+import { isLogged, logout } from '../../redux/auth-reducer';
 
 class HeaderContainer extends React.Component {
 	componentDidMount() {
@@ -14,6 +14,7 @@ class HeaderContainer extends React.Component {
 				{...this.props}
 				isAuth={this.props.isAuth}
 				login={this.props.login}
+				logout={this.props.logout}
 			/>
 		);
 	}
@@ -28,7 +29,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		isLogged: () => dispatch(isLogged),
+		isLogged: () => dispatch(isLogged()),
+		logout: () => dispatch(logout()),
 	};
 };
 
