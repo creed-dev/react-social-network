@@ -4,7 +4,6 @@ import { LoginReduxForm } from './LoginReduxForm/LoginReduxForm';
 
 const Login = props => {
 	const onSubmit = formData => {
-		console.log(formData);
 		props.login(formData.email, formData.password, formData.rememberMe);
 	};
 

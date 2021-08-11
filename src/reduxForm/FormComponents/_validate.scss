@@ -19,4 +19,11 @@
 		color: red;
 		margin: 1px 0 5px 0;
 	}
+	&_invalid-data {
+		color: red;
+		border: 2px solid red;
+		padding: 3px;
+		width: 200px;
+		margin-bottom: 5px;
+	}
 }

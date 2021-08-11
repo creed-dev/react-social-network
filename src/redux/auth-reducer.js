@@ -1,3 +1,4 @@
+import { stopSubmit } from 'redux-form';
 import { authAPI } from '../api/api';
 
 const SET_USER_AUTH = 'SET-USER-AUTH';
@@ -46,6 +47,9 @@ export const login =
 		authAPI.login(email, password, rememberMe).then(data => {
 			if (data.resultCode === 0) {
 				dispatch(isLogged());
+			} else {
+				const errorMessage = data.messages[0];
+				dispatch(stopSubmit('login', { _error: errorMessage }));
 			}
 		});
 	};

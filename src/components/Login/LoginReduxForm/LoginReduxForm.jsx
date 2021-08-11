@@ -20,6 +20,9 @@ const LoginForm = props => {
 				validate={[required]}
 				type="password"
 			/>
+			{props.error && (
+				<div className="validate__login_invalid-data">{props.error}</div>
+			)}
 			<div className="login__form-item">
 				<Field component="Input" type="checkbox" name="rememberMe" />
 				remember me
