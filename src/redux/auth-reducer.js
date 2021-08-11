@@ -33,7 +33,7 @@ export const setUserAuthActionCreator = (id, login, email, isAuth) => ({
 });
 
 export const isLogged = () => dispatch => {
-	authAPI.isAuth().then(data => {
+	return authAPI.isAuth().then(data => {
 		if (data.resultCode === 0) {
 			const { email, id, login } = data.data;
 			dispatch(setUserAuthActionCreator(id, login, email, true));
