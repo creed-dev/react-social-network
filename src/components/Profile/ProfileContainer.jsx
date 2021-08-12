@@ -9,28 +9,27 @@ import Profile from './Profile';
 import { withRouter } from 'react-router-dom';
 import { withAuthRedirect } from '../../HOC/withAuthRedirect';
 import { compose } from 'redux';
+import { useEffect } from 'react';
 
-class ProfileContainer extends React.Component {
-	componentDidMount() {
-		let userId = this.props.match.params.userId;
+const ProfileContainer = props => {
+	useEffect(() => {
+		let userId = props.match.params.userId;
 		if (!userId) {
-			userId = this.props.userId;
+			userId = props.userId;
 		}
-		this.props.getProfile(userId);
-		this.props.setUserStatus(userId);
-	}
+		props.getProfile(userId);
+		props.setUserStatus(userId);
+	}, []);
 
-	render() {
-		return (
-			<Profile
-				{...this.props}
-				profile={this.props.profile}
-				userStatus={this.props.userStatus}
-				updateUserStatus={this.props.updateUserStatus}
-			/>
-		);
-	}
-}
+	return (
+		<Profile
+			{...props}
+			profile={props.profile}
+			userStatus={props.userStatus}
+			updateUserStatus={props.updateUserStatus}
+		/>
+	);
+};
 
 const mapStateToProps = state => {
 	return {
