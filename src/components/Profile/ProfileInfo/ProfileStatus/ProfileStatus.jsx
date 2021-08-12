@@ -1,60 +1,45 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
-class ProfileStatus extends React.Component {
-	state = {
-		editMode: false,
-		status: this.props.userStatus,
+const ProfileStatusWithHooks = props => {
+	const [editMode, setEditMode] = useState(false);
+	const [status, setStatus] = useState(props.userStatus);
+
+	const activateEditMode = () => {
+		setEditMode(true);
 	};
 
-	activateEditMode = () => {
-		this.setState({
-			editMode: true,
-		});
+	const deactivateEditMode = () => {
+		setEditMode(false);
+		props.updateUserStatus(status);
 	};
 
-	deactivateEditMode = () => {
-		this.setState({
-			editMode: false,
-		});
-		this.props.updateUserStatus(this.state.status);
+	const onChangeInput = e => {
+		setStatus(e.currentTarget.value);
 	};
 
-	onChangeInput = e => {
-		this.setState({
-			status: e.currentTarget.value,
-		});
-	};
+	useEffect(() => {
+		setStatus(props.userStatus);
+	}, [props.userStatus]);
 
-	componentDidUpdate(prevProps, prevState) {
-		if (prevProps.userStatus !== this.props.userStatus) {
-			this.setState({
-				status: this.props.userStatus,
-			});
-		}
-	}
+	return editMode ? (
+		<div onClick={activateEditMode} className="profile-info__descr-item">
+			Status:{' '}
+			<input
+				onBlur={deactivateEditMode}
+				onChange={onChangeInput}
+				autoFocus={true}
+				value={status}
+			/>
+		</div>
+	) : (
+		<div onClick={activateEditMode} className="profile-info__descr-item">
+			{props.userStatus
+				? `Status: ${props.userStatus}`
+				: 'Сlick here to set the status'}
+		</div>
+	);
+};
 
-	render() {
-		return this.state.editMode ? (
-			<div onClick={this.activateEditMode} className="profile-info__descr-item">
-				Status:{' '}
-				<input
-					onBlur={this.deactivateEditMode}
-					onChange={this.onChangeInput}
-					autoFocus={true}
-					value={this.state.status}
-				/>
-			</div>
-		) : (
-			<div
-				onClick={this.activateEditMode.bind(this)}
-				className="profile-info__descr-item"
-			>
-				{this.props.userStatus
-					? `Status: ${this.props.userStatus}`
-					: 'Сlick here to set the status'}
-			</div>
-		);
-	}
-}
-
-export default ProfileStatus;
+export default ProfileStatusWithHooks;
