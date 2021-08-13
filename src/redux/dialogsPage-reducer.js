@@ -1,5 +1,7 @@
+// actions types
 const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE';
 
+// initial state
 const initialState = {
 	dialogsName: [
 		{
@@ -34,6 +36,7 @@ const initialState = {
 	dialogsSendMessageValue: '',
 };
 
+// reducers
 const dialogsPageReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case SEND_NEW_MESSAGE: {
@@ -51,6 +54,7 @@ const dialogsPageReducer = (state = initialState, action) => {
 	}
 };
 
+// actions creators
 export const sendNewMessageActionCreator = text => ({
 	type: SEND_NEW_MESSAGE,
 	text,

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import userAvatar from '../../assets/img/user-logo.png';
 
-const User = props => {
+const Users = props => {
 	const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
 	const pages = [];
@@ -77,4 +77,4 @@ const User = props => {
 	);
 };
 
-export default User;
+export default Users;

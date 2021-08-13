@@ -1,11 +1,14 @@
 import { isLogged } from './auth-reducer';
 
-const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS';
+// actions types
+const INITIALIZED_SUCCESS = 'app/INITIALIZED-SUCCESS';
 
+// initial state
 const initialState = {
 	initialized: false,
 };
 
+// reducers
 const appReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case INITIALIZED_SUCCESS:
@@ -18,15 +21,16 @@ const appReducer = (state = initialState, action) => {
 	}
 };
 
+// actions creators
 const initializedSuccessActionCreator = () => ({
 	type: INITIALIZED_SUCCESS,
 });
 
-export const initializedApp = () => dispatch => {
+// redux-thunks
+export const initializedApp = () => async dispatch => {
 	const promise = dispatch(isLogged());
-	promise.then(() => {
-		dispatch(initializedSuccessActionCreator());
-	});
+	await promise;
+	dispatch(initializedSuccessActionCreator());
 };
 
 export default appReducer;
