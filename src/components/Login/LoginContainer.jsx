@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { login } from '../../redux/auth-reducer';
 import Login from './Login';
 
+const LoginContainer = props => {
+	return <Login login={props.login} isAuth={props.isAuth} />;
+};
+
 const mapStateToProps = state => {
 	return {
 		isAuth: state.auth.isAuth,
@@ -15,10 +19,6 @@ const mapDispatchToProps = dispatch => {
 			dispatch(login(email, password, rememberMe));
 		},
 	};
-};
-
-const LoginContainer = props => {
-	return <Login login={props.login} isAuth={props.isAuth} />;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);

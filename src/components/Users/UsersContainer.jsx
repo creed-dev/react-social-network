@@ -10,35 +10,34 @@ import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
 import { withAuthRedirect } from '../../HOC/withAuthRedirect';
 import { compose } from 'redux';
+import { useEffect } from 'react';
 
-class UsersContainer extends React.Component {
-	componentDidMount() {
-		this.props.getUsers(this.props.currentPage, this.props.pageSize);
-	}
+const UsersContainer = props => {
+	useEffect(() => {
+		props.getUsers(props.currentPage, props.pageSize);
+	}, []);
 
-	onPageChanged = page => {
-		this.props.changedPage(page, this.props.pageSize);
+	const onPageChanged = page => {
+		props.changedPage(page, props.pageSize);
 	};
 
-	render() {
-		return (
-			<>
-				{this.props.isFetching ? <Preloader /> : null}
-				<Users
-					totalUsersCount={this.props.totalUsersCount}
-					pageSize={this.props.pageSize}
-					currentPage={this.props.currentPage}
-					onPageChanged={this.onPageChanged}
-					users={this.props.users}
-					unsubscribe={this.props.unsubscribe}
-					subscribe={this.props.subscribe}
-					followingInProgress={this.props.followingInProgress}
-					toggleFollowingProgress={this.props.toggleFollowingProgress}
-				/>
-			</>
-		);
-	}
-}
+	return (
+		<>
+			{props.isFetching ? <Preloader /> : null}
+			<Users
+				totalUsersCount={props.totalUsersCount}
+				pageSize={props.pageSize}
+				currentPage={props.currentPage}
+				onPageChanged={onPageChanged}
+				users={props.users}
+				unsubscribe={props.unsubscribe}
+				subscribe={props.subscribe}
+				followingInProgress={props.followingInProgress}
+				toggleFollowingProgress={props.toggleFollowingProgress}
+			/>
+		</>
+	);
+};
 
 const mapStateToProps = state => {
 	return {

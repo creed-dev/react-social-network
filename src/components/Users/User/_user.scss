@@ -1,0 +1,36 @@
+.user {
+	padding: 5px;
+	border: 2px solid black;
+	display: flex;
+	margin-bottom: 20px;
+
+	&__descr {
+		margin-left: 15px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	&__action {
+		display: flex;
+		flex-direction: column;
+	}
+	&__avatar {
+		width: 100px;
+	}
+
+	&__info {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__location {
+		text-align: right;
+		width: 150px;
+	}
+
+	&__btn {
+		margin-top: 5px;
+	}
+}
