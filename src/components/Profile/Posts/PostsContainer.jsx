@@ -3,6 +3,16 @@ import { connect } from 'react-redux';
 import { addNewPostActionCreator } from '../../../redux/profilePage-reducer';
 import Posts from './Posts';
 
+const PostsContainer = props => {
+	return (
+		<Posts
+			posts={props.posts}
+			postTextareaValue={props.postTextareaValue}
+			addNewPost={props.addNewPost}
+		/>
+	);
+};
+
 const mapStateToProps = state => {
 	return {
 		posts: state.profilePage.postsData,
@@ -12,12 +22,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		addNewPost2: text => {
+		addNewPost: text => {
 			dispatch(addNewPostActionCreator(text));
 		},
 	};
 };
 
-const PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts);
-
-export default PostsContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer);

@@ -23,7 +23,6 @@ const ProfileContainer = props => {
 
 	return (
 		<Profile
-			{...props}
 			profile={props.profile}
 			userStatus={props.userStatus}
 			updateUserStatus={props.updateUserStatus}

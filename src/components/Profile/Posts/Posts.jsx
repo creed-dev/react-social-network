@@ -8,7 +8,7 @@ const Posts = props => {
 	));
 
 	const onSubmit = formData => {
-		props.addNewPost2(formData.newPostText);
+		props.addNewPost(formData.newPostText);
 	};
 
 	return (
