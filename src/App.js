@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import React from 'react';
+import React, { useEffect } from 'react';
 import './css/App.min.css';
 import { Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
@@ -14,35 +14,30 @@ import { connect } from 'react-redux';
 import { initializedApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 
-class App extends React.Component {
-	componentDidMount() {
-		this.props.initializedApp();
-	}
+const App = props => {
+	useEffect(() => {
+		props.initializedApp();
+	}, []);
 
-	render() {
-		if (!this.props.initialized) return <Preloader />;
+	if (!props.initialized) return <Preloader />;
 
-		return (
-			<div className="container">
-				<HeaderContainer />
-				<div className="wrapper">
-					<Navbar />
-					<div className="main">
-						<Route
-							path="/profile/:userId?"
-							render={() => <ProfileContainer />}
-						/>
-						<Route path="/dialogs" render={() => <DialogsContainer />} />
-						<Route path="/music" component={Music} />
-						<Route path="/settings" component={Settings} />
-						<Route path="/users" render={() => <UsersContainer />} />
-						<Route path="/login" component={LoginContainer} />
-					</div>
+	return (
+		<div className="container">
+			<HeaderContainer />
+			<div className="wrapper">
+				<Navbar />
+				<div className="main">
+					<Route path="/profile/:userId?" render={() => <ProfileContainer />} />
+					<Route path="/dialogs" render={() => <DialogsContainer />} />
+					<Route path="/music" render={() => <Music />} />
+					<Route path="/settings" render={() => <Settings />} />
+					<Route path="/users" render={() => <UsersContainer />} />
+					<Route path="/login" render={() => <LoginContainer />} />
 				</div>
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};
 
 const mapStateToProps = state => {
 	return {
