@@ -1,5 +1,6 @@
 import { usersAPI } from '../api/api';
 
+// actions types
 const SUBSCRIBE = 'SUBSCRIBE';
 const UNSUBSCRIBE = 'UNSUBSCRIBE';
 const SET_USERS = 'SET-USERS';
@@ -8,6 +9,7 @@ const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const TOGGLE_FETCHING = 'TOGGLE-FETCHING';
 const FOLLOWING_IN_PROGRESS = 'FOLLOWING-IN-PROGRESS';
 
+// initial state
 const initialState = {
 	users: [],
 	pageSize: 50,
@@ -17,6 +19,7 @@ const initialState = {
 	followingInProgress: [],
 };
 
+// reducers
 const usersPageReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case SUBSCRIBE:
@@ -59,6 +62,7 @@ const usersPageReducer = (state = initialState, action) => {
 	}
 };
 
+// actions creators
 export const subscribeActionCreator = userId => ({ type: SUBSCRIBE, userId });
 export const unsubscribeActionCreator = userId => ({
 	type: UNSUBSCRIBE,
@@ -84,42 +88,39 @@ export const followingInProgressActionCreator = (inProgress, userId) => ({
 	userId,
 });
 
-export const getUsers = (currentPage, pageSize) => dispatch => {
+// redux-thunks
+export const getUsers = (currentPage, pageSize) => async dispatch => {
 	dispatch(toggleFetchingActionCreator(true));
-	usersAPI.getPages(currentPage, pageSize).then(data => {
-		dispatch(setUsersActionCreator(data.items));
-		dispatch(setTotalUsersCountActionCreator(data.totalCount));
-		dispatch(toggleFetchingActionCreator(false));
-	});
+	const data = await usersAPI.getPages(currentPage, pageSize);
+	dispatch(setUsersActionCreator(data.items));
+	dispatch(setTotalUsersCountActionCreator(data.totalCount));
+	dispatch(toggleFetchingActionCreator(false));
 };
 
-export const changedPage = (page, pageSize) => dispatch => {
+export const changedPage = (page, pageSize) => async dispatch => {
 	dispatch(setPageNumberActionCreator(page));
 	dispatch(toggleFetchingActionCreator(true));
-	usersAPI.setPage(page, pageSize).then(data => {
-		dispatch(setUsersActionCreator(data.items));
-		dispatch(toggleFetchingActionCreator(false));
-	});
+	const data = await usersAPI.setPage(page, pageSize);
+	dispatch(setUsersActionCreator(data.items));
+	dispatch(toggleFetchingActionCreator(false));
 };
 
-export const unsubscribe = userId => dispatch => {
+export const unsubscribe = userId => async dispatch => {
 	dispatch(followingInProgressActionCreator(true, userId));
-	usersAPI.unfollow(userId).then(data => {
-		if (data.resultCode === 0) {
-			dispatch(unsubscribeActionCreator(userId));
-		}
-		dispatch(followingInProgressActionCreator(false, userId));
-	});
+	const data = await usersAPI.unfollow(userId);
+	if (data.resultCode === 0) {
+		dispatch(unsubscribeActionCreator(userId));
+	}
+	dispatch(followingInProgressActionCreator(false, userId));
 };
 
-export const subscribe = userId => dispatch => {
+export const subscribe = userId => async dispatch => {
 	dispatch(followingInProgressActionCreator(true, userId));
-	usersAPI.follow(userId).then(data => {
-		if (data.resultCode === 0) {
-			dispatch(subscribeActionCreator(userId));
-		}
-		dispatch(followingInProgressActionCreator(false, userId));
-	});
+	const data = await usersAPI.follow(userId);
+	if (data.resultCode === 0) {
+		dispatch(subscribeActionCreator(userId));
+	}
+	dispatch(followingInProgressActionCreator(false, userId));
 };
 
 export default usersPageReducer;
