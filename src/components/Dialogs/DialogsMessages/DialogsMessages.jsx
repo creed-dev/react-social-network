@@ -8,7 +8,7 @@ const DialogsMessages = props => {
 	));
 
 	const onSubmit = formData => {
-		props.sendNewMessage2(formData.message);
+		props.sendNewMessage(formData.message);
 	};
 
 	return (

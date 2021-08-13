@@ -8,11 +8,11 @@ import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
 import LoginContainer from './components/Login/LoginContainer';
 import { connect } from 'react-redux';
 import { initializedApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
+import Dialogs from './components/Dialogs/Dialogs';
 
 const App = props => {
 	useEffect(() => {
@@ -28,7 +28,7 @@ const App = props => {
 				<Navbar />
 				<div className="main">
 					<Route path="/profile/:userId?" render={() => <ProfileContainer />} />
-					<Route path="/dialogs" render={() => <DialogsContainer />} />
+					<Route path="/dialogs" render={() => <Dialogs />} />
 					<Route path="/music" render={() => <Music />} />
 					<Route path="/settings" render={() => <Settings />} />
 					<Route path="/users" render={() => <UsersContainer />} />
