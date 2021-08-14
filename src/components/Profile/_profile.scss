@@ -3,11 +3,20 @@
 	padding: 10px;
 	&-info {
 		display: flex;
-		&__avatar {
-			width: 150px;
-		}
 		&__descr {
 			margin-left: 10px;
 		}
+	}
+}
+
+.avatar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	&__img {
+		width: 150px;
+	}
+	&__btn {
+		margin-top: 10px;
 	}
 }

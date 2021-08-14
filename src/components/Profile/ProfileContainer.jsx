@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
 	getProfile,
+	setProfilePhoto,
 	setUserStatus,
 	updateUserStatus,
 } from '../../redux/profilePage-reducer';
@@ -19,13 +20,15 @@ const ProfileContainer = props => {
 		}
 		props.getProfile(userId);
 		props.setUserStatus(userId);
-	}, []);
+	});
 
 	return (
 		<Profile
+			isOwner={!props.match.params.userId}
 			profile={props.profile}
 			userStatus={props.userStatus}
 			updateUserStatus={props.updateUserStatus}
+			setProfilePhoto={props.setProfilePhoto}
 		/>
 	);
 };
@@ -43,6 +46,7 @@ const mapDispatchToProps = dispatch => {
 		getProfile: userId => dispatch(getProfile(userId)),
 		setUserStatus: userId => dispatch(setUserStatus(userId)),
 		updateUserStatus: status => dispatch(updateUserStatus(status)),
+		setProfilePhoto: photo => dispatch(setProfilePhoto(photo)),
 	};
 };
 

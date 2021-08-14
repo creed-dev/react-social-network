@@ -1,6 +1,6 @@
 import Preloader from '../../common/Preloader/Preloader';
-import userAvatar from '../../../assets/img/user-logo.png';
 import ProfileStatus from './ProfileStatus/ProfileStatus';
+import ProfileAvatar from './ProfileAvatar/ProfileAvatar';
 
 const ProfileInfo = props => {
 	if (!props.profile) {
@@ -9,14 +9,34 @@ const ProfileInfo = props => {
 
 	return (
 		<div className="profile-info">
-			<img
-				src={
-					props.profile.photos.small != null
-						? props.profile.photos.small
-						: userAvatar
-				}
-				alt="avatar"
-				className="profile-info__avatar"
+			{/* <div className="avatar">
+				<img
+					src={
+						props.profile.photos.large != null
+							? props.profile.photos.large
+							: userAvatar
+					}
+					alt="avatar"
+					className="avatar__img"
+				/>
+				{props.isOwner && (
+					<div>
+						<input
+							class="visually-hidden"
+							type="file"
+							id="file"
+							onChange={selectedProfilePhoto}
+						/>
+						<button className="avatar__btn">
+							<label for="file">Choose avatar</label>
+						</button>
+					</div>
+				)}
+			</div> */}
+			<ProfileAvatar
+				profile={props.profile}
+				isOwner={props.isOwner}
+				setProfilePhoto={props.setProfilePhoto}
 			/>
 			<div className="profile-info__descr">
 				<div className="profile-info__descr-item">
