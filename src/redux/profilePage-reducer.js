@@ -1,11 +1,11 @@
 import { profileAPI } from '../api/api';
 
 // actions types
-const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_STATUS = 'SET-STATUS';
-const UPDATE_STATUS = 'UPDATE-STATUS';
-const ADD_NEW_POST = 'ADD-NEW-POST';
-const SET_PROFILE_PHOTO = 'SET-PROFILE-PHOTO';
+const SET_USER_PROFILE = 'profile/SET-USER-PROFILE';
+const SET_STATUS = 'profile/SET-STATUS';
+const UPDATE_STATUS = 'profile/UPDATE-STATUS';
+const ADD_NEW_POST = 'profile/ADD-NEW-POST';
+const SET_PROFILE_PHOTO = 'profile/SET-PROFILE-PHOTO';
 
 // initial state
 const initialState = {

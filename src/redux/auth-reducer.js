@@ -2,7 +2,7 @@ import { stopSubmit } from 'redux-form';
 import { authAPI } from '../api/api';
 
 // actions types
-const SET_USER_AUTH = 'SET-USER-AUTH';
+const SET_USER_AUTH = 'auth/SET-USER-AUTH';
 
 // initial state
 const initialState = {

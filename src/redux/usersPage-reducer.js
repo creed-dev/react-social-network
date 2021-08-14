@@ -1,13 +1,13 @@
 import { usersAPI } from '../api/api';
 
 // actions types
-const SUBSCRIBE = 'SUBSCRIBE';
-const UNSUBSCRIBE = 'UNSUBSCRIBE';
-const SET_USERS = 'SET-USERS';
-const SET_PAGE_NUMBER = 'SET-PAGE-NUMBER';
-const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
-const TOGGLE_FETCHING = 'TOGGLE-FETCHING';
-const FOLLOWING_IN_PROGRESS = 'FOLLOWING-IN-PROGRESS';
+const SUBSCRIBE = 'users/SUBSCRIBE';
+const UNSUBSCRIBE = 'users/UNSUBSCRIBE';
+const SET_USERS = 'users/SET-USERS';
+const SET_PAGE_NUMBER = 'users/SET-PAGE-NUMBER';
+const SET_TOTAL_USERS_COUNT = 'users/SET-TOTAL-USERS-COUNT';
+const TOGGLE_FETCHING = 'users/TOGGLE-FETCHING';
+const FOLLOWING_IN_PROGRESS = 'users/FOLLOWING-IN-PROGRESS';
 
 // initial state
 const initialState = {

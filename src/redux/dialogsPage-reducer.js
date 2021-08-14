@@ -1,5 +1,5 @@
 // actions types
-const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE';
+const SEND_NEW_MESSAGE = 'dialogs/SEND-NEW-MESSAGE';
 
 // initial state
 const initialState = {
