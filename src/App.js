@@ -8,11 +8,14 @@ import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import LoginContainer from './components/Login/LoginContainer';
+// import LoginContainer from './components/Login/LoginContainer';
 import { connect } from 'react-redux';
 import { initializedApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 import Dialogs from './components/Dialogs/Dialogs';
+const LoginContainer = React.lazy(() =>
+	import('./components/Login/LoginContainer')
+);
 
 const App = props => {
 	useEffect(() => {
@@ -32,7 +35,16 @@ const App = props => {
 					<Route path="/music" render={() => <Music />} />
 					<Route path="/settings" render={() => <Settings />} />
 					<Route path="/users" render={() => <UsersContainer />} />
-					<Route path="/login" render={() => <LoginContainer />} />
+					<Route
+						path="/login"
+						render={() => {
+							return (
+								<React.Suspense fallback={<Preloader />}>
+									<LoginContainer />
+								</React.Suspense>
+							);
+						}}
+					/>
 				</div>
 			</div>
 		</div>
