@@ -27,6 +27,9 @@ export const profileAPI = {
 			.put(`profile/photo`, formData)
 			.then(response => response.data);
 	},
+	updateProfileData(profileData) {
+		return instance.put(`profile`, profileData).then(response => response.data);
+	},
 };
 
 export const usersAPI = {

@@ -10,6 +10,8 @@ const Profile = props => {
 				userStatus={props.userStatus}
 				updateUserStatus={props.updateUserStatus}
 				setProfilePhoto={props.setProfilePhoto}
+				userId={props.userId}
+				setProfileData={props.setProfileData}
 			/>
 			<PostsContainer />
 		</div>

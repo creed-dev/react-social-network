@@ -1,6 +1,6 @@
 import Preloader from '../../common/Preloader/Preloader';
-import ProfileStatus from './ProfileStatus/ProfileStatus';
 import ProfileAvatar from './ProfileAvatar/ProfileAvatar';
+import ProfileDescription from './ProfileDescription/ProfileDescription';
 
 const ProfileInfo = props => {
 	if (!props.profile) {
@@ -14,19 +14,14 @@ const ProfileInfo = props => {
 				isOwner={props.isOwner}
 				setProfilePhoto={props.setProfilePhoto}
 			/>
-			<div className="profile-info__descr">
-				<div className="profile-info__descr-item">
-					Fullname: {props.profile.fullName}
-				</div>
-				<div className="profile-info__descr-item">
-					Looking for a job: {props.profile.lookingForAJob ? 'Ищу' : 'Не ищу'}
-				</div>
-				<div className="profile-info__descr-item">Education: Higher</div>
-				<ProfileStatus
-					userStatus={props.userStatus}
-					updateUserStatus={props.updateUserStatus}
-				/>
-			</div>
+			<ProfileDescription
+				isOwner={props.isOwner}
+				userId={props.userId}
+				profile={props.profile}
+				userStatus={props.userStatus}
+				updateUserStatus={props.updateUserStatus}
+				setProfileData={props.setProfileData}
+			/>
 		</div>
 	);
 };

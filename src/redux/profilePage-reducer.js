@@ -1,3 +1,4 @@
+import { stopSubmit } from 'redux-form';
 import { profileAPI } from '../api/api';
 
 // actions types
@@ -108,6 +109,17 @@ export const setProfilePhoto = photo => async dispatch => {
 	const data = await profileAPI.updateProfilePhoto(photo);
 	if (data.resultCode === 0) {
 		dispatch(setProfilePhotoActionCreator(data.photos));
+	}
+};
+
+export const setProfileData = profileData => async (dispatch, getState) => {
+	const userId = getState().auth.id;
+	const data = await profileAPI.updateProfileData(profileData);
+	if (data.resultCode === 0) {
+		dispatch(getProfile(userId));
+	} else {
+		const errorMessage = data.messages[0];
+		dispatch(stopSubmit('profileData', { _error: errorMessage }));
 	}
 };
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
 	getProfile,
+	setProfileData,
 	setProfilePhoto,
 	setUserStatus,
 	updateUserStatus,
@@ -29,6 +30,8 @@ const ProfileContainer = props => {
 			userStatus={props.userStatus}
 			updateUserStatus={props.updateUserStatus}
 			setProfilePhoto={props.setProfilePhoto}
+			userId={props.userId}
+			setProfileData={props.setProfileData}
 		/>
 	);
 };
@@ -47,6 +50,9 @@ const mapDispatchToProps = dispatch => {
 		setUserStatus: userId => dispatch(setUserStatus(userId)),
 		updateUserStatus: status => dispatch(updateUserStatus(status)),
 		setProfilePhoto: photo => dispatch(setProfilePhoto(photo)),
+		setProfileData: profileData => {
+			dispatch(setProfileData(profileData));
+		},
 	};
 };
 
