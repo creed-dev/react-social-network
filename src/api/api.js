@@ -55,12 +55,17 @@ export const authAPI = {
 	isAuth() {
 		return instance.get('auth/me').then(response => response.data);
 	},
-	login(email, password, rememberMe = false) {
+	login(captcha = null, email, password, rememberMe = false) {
 		return instance
-			.post('auth/login', { email, password, rememberMe })
+			.post('auth/login', { captcha, email, password, rememberMe })
 			.then(response => response.data);
 	},
 	logout() {
 		return instance.delete('auth/login').then(response => response.data);
+	},
+	getCaptchaUrl() {
+		return instance
+			.get('security/get-captcha-url')
+			.then(response => response.data);
 	},
 };

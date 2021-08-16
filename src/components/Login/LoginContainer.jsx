@@ -4,12 +4,19 @@ import { login } from '../../redux/auth-reducer';
 import Login from './Login';
 
 const LoginContainer = props => {
-	return <Login login={props.login} isAuth={props.isAuth} />;
+	return (
+		<Login
+			captchaUrl={props.captchaUrl}
+			login={props.login}
+			isAuth={props.isAuth}
+		/>
+	);
 };
 
 const mapStateToProps = state => {
 	return {
 		isAuth: state.auth.isAuth,
+		captchaUrl: state.auth.captchaUrl,
 	};
 };
 

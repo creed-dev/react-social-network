@@ -27,6 +27,17 @@ const LoginForm = props => {
 				<Field component="Input" type="checkbox" name="rememberMe" />
 				remember me
 			</div>
+
+			{props.captchaUrl && <img src={props.captchaUrl}></img>}
+			{props.captchaUrl && (
+				<Field
+					component={InputLogin}
+					className="login__form-item"
+					placeholder="Symbols from image"
+					name="captcha"
+					validate={[required]}
+				/>
+			)}
 			<button>Login</button>
 		</form>
 	);

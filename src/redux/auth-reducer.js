@@ -3,6 +3,7 @@ import { authAPI } from '../api/api';
 
 // actions types
 const SET_USER_AUTH = 'auth/SET-USER-AUTH';
+const SET_CAPTCHA_URL = 'auth/GET-CAPTCHA-URL';
 
 // initial state
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
 	login: null,
 	email: null,
 	isAuth: false,
+	captchaUrl: null,
 };
 
 // reducers
@@ -19,6 +21,11 @@ const authReducer = (state = initialState, action) => {
 			return {
 				...state,
 				...action.data,
+			};
+		case SET_CAPTCHA_URL:
+			return {
+				...state,
+				captchaUrl: action.captchaUrl,
 			};
 		default:
 			return state;
@@ -36,6 +43,11 @@ export const setUserAuthActionCreator = (id, login, email, isAuth) => ({
 	},
 });
 
+export const setCaptchaUrlActionCreator = captchaUrl => ({
+	type: SET_CAPTCHA_URL,
+	captchaUrl,
+});
+
 // redux-thunks
 export const isLogged = () => async dispatch => {
 	const data = await authAPI.isAuth();
@@ -46,12 +58,15 @@ export const isLogged = () => async dispatch => {
 };
 
 export const login =
-	(email, password, rememberMe = false) =>
-	async dispatch => {
-		const data = await authAPI.login(email, password, rememberMe);
+	(captcha, email, password, rememberMe) => async dispatch => {
+		debugger;
+		const data = await authAPI.login(captcha, email, password, rememberMe);
 		if (data.resultCode === 0) {
 			dispatch(isLogged());
 		} else {
+			if (data.resultCode === 10) {
+				dispatch(getCaptchaUrl());
+			}
 			const errorMessage = data.messages[0];
 			dispatch(stopSubmit('login', { _error: errorMessage }));
 		}
@@ -62,6 +77,11 @@ export const logout = () => async dispatch => {
 	if (data.resultCode === 0) {
 		dispatch(setUserAuthActionCreator(null, null, null, false));
 	}
+};
+
+export const getCaptchaUrl = () => async dispatch => {
+	const data = await authAPI.getCaptchaUrl();
+	dispatch(setCaptchaUrlActionCreator(data.url));
 };
 
 export default authReducer;
