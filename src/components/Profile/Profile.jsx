@@ -12,6 +12,8 @@ const Profile = props => {
 				setProfilePhoto={props.setProfilePhoto}
 				userId={props.userId}
 				setProfileData={props.setProfileData}
+				editMode={props.editMode}
+				setEditModeProfile={props.setEditModeProfile}
 			/>
 			<PostsContainer />
 		</div>

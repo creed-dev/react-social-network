@@ -21,6 +21,8 @@ const ProfileInfo = props => {
 				userStatus={props.userStatus}
 				updateUserStatus={props.updateUserStatus}
 				setProfileData={props.setProfileData}
+				editMode={props.editMode}
+				setEditModeProfile={props.setEditModeProfile}
 			/>
 		</div>
 	);

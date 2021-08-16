@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
 	getProfile,
+	setEditModeProfile,
 	setProfileData,
 	setProfilePhoto,
 	setUserStatus,
@@ -32,6 +33,8 @@ const ProfileContainer = props => {
 			setProfilePhoto={props.setProfilePhoto}
 			userId={props.userId}
 			setProfileData={props.setProfileData}
+			editMode={props.editMode}
+			setEditModeProfile={props.setEditModeProfile}
 		/>
 	);
 };
@@ -41,6 +44,7 @@ const mapStateToProps = state => {
 		profile: state.profilePage.profile,
 		userStatus: state.profilePage.userStatus,
 		userId: state.auth.id,
+		editMode: state.profilePage.editMode,
 	};
 };
 
@@ -52,6 +56,9 @@ const mapDispatchToProps = dispatch => {
 		setProfilePhoto: photo => dispatch(setProfilePhoto(photo)),
 		setProfileData: profileData => {
 			dispatch(setProfileData(profileData));
+		},
+		setEditModeProfile: editMode => {
+			dispatch(setEditModeProfile(editMode));
 		},
 	};
 };

@@ -7,6 +7,7 @@ const SET_STATUS = 'profile/SET-STATUS';
 const UPDATE_STATUS = 'profile/UPDATE-STATUS';
 const ADD_NEW_POST = 'profile/ADD-NEW-POST';
 const SET_PROFILE_PHOTO = 'profile/SET-PROFILE-PHOTO';
+const SET_EDIT_MODE_PROFILE = 'profile/SET-EDIT-MODE-PROFILE';
 
 // initial state
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
 	],
 	postTextareaValue: '',
 	userStatus: '',
+	editMode: false,
 };
 
 // reducers
@@ -61,6 +63,11 @@ const profilePageReducer = (state = initialState, action) => {
 					},
 				},
 			};
+		case SET_EDIT_MODE_PROFILE:
+			return {
+				...state,
+				editMode: action.editMode,
+			};
 		default:
 			return state;
 	}
@@ -85,6 +92,11 @@ export const addNewPostActionCreator = text => ({
 export const setProfilePhotoActionCreator = photo => ({
 	type: SET_PROFILE_PHOTO,
 	photo,
+});
+
+export const setEditModeProfile = editMode => ({
+	type: SET_EDIT_MODE_PROFILE,
+	editMode,
 });
 
 // redux-thunks
@@ -116,6 +128,7 @@ export const setProfileData = profileData => async (dispatch, getState) => {
 	const userId = getState().auth.id;
 	const data = await profileAPI.updateProfileData(profileData);
 	if (data.resultCode === 0) {
+		dispatch(setEditModeProfile(false));
 		dispatch(getProfile(userId));
 	} else {
 		const errorMessage = data.messages[0];
