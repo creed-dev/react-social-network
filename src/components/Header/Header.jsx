@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 const Header = props => {
 	return (
 		<div className="header">
-			<div className="header__logo">Anonymous Social Network</div>
+			<div className="header__logo">Social Network</div>
 			<div className="header__auth">
 				{props.isAuth ? (
 					<div className="header__auth-login header__auth-login_loginned">
