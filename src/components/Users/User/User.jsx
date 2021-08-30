@@ -47,12 +47,6 @@ const User = props => {
 					<div className="user__descr-name">{props.user.name}</div>
 					<div className="user__descr-status">{props.user.status}</div>
 				</div>
-				<div className="user__location">
-					<div className="user__location-country">
-						{'user.location.country'}
-					</div>
-					<div className="user__location-city">{'user.location.city'}</div>
-				</div>
 			</div>
 		</div>
 	);

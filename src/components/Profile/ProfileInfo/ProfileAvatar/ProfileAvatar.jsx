@@ -21,7 +21,7 @@ const ProfileAvatar = props => {
 			{props.isOwner && (
 				<div>
 					<input
-						class="visually-hidden"
+						className="visually-hidden"
 						type="file"
 						id="file"
 						onChange={selectedProfilePhoto}

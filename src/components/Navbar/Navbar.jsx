@@ -31,24 +31,6 @@ const Navbar = () => {
 						Dialogs
 					</NavLink>
 				</li>
-				<li>
-					<NavLink
-						to="/music"
-						className="navbar__item"
-						activeClassName="navbar__item_active"
-					>
-						Music
-					</NavLink>
-				</li>
-				<li>
-					<NavLink
-						to="/settings"
-						className="navbar__item"
-						activeClassName="navbar__item_active"
-					>
-						Settings
-					</NavLink>
-				</li>
 			</ul>
 		</nav>
 	);

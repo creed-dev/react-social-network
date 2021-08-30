@@ -4,7 +4,12 @@ import Post from './Post/Post';
 
 const Posts = props => {
 	const renderPosts = props.posts.map(post => (
-		<Post text={post.text} id={post.id} likeCount={post.likeCount} />
+		<Post
+			key={`${post}_${post.id}`}
+			text={post.text}
+			id={post.id}
+			likeCount={post.likeCount}
+		/>
 	));
 
 	const onSubmit = formData => {
